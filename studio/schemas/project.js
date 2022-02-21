@@ -22,5 +22,27 @@ export default {
       type: "image",
       validation: (Rule) => Rule.required(),
     },
+    {
+      name: "url",
+      title: "URL",
+      type: "string",
+    },
+    {
+      name: "intro",
+      title: "Intro",
+      type: "string",
+    },
+    {
+      name: "description",
+      title: "Description",
+      type: "array",
+      of: [{ type: "block" }],
+    },
+    {
+      name: "technologies",
+      title: "Technologies",
+      type: "array",
+      of: [{ type: "reference", to: [{ type: "technology" }] }],
+    },
   ],
 };

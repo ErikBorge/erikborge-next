@@ -5,6 +5,7 @@ import createSchema from "part:@sanity/base/schema-creator";
 import schemaTypes from "all:part:@sanity/base/schema-type";
 
 import project from "./project.js";
+import technology from "./technology.js";
 import home from "./home.js";
 
 // Then we give our schema to the builder and provide the result to Sanity
@@ -16,6 +17,7 @@ export default createSchema({
   types: schemaTypes.concat([
     /* Your types here! */
     project,
+    technology,
     home,
   ]),
 });

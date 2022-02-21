@@ -1,0 +1,48 @@
+.navbutton {
+  &__nav-next,
+  &__nav-prev {
+    position: absolute;
+    z-index: 10;
+    top: 0;
+    width: 150px;
+    height: 100px;
+    top: 50%;
+    z-index: 10;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: left 0.3s ease-out, right 0.3s ease-out;
+  }
+  &__nav-inner {
+    width: 100%;
+    height: 1px;
+    background-color: black;
+    transition: width 0.3s ease-out;
+    display: flex;
+  }
+  &__nav-next {
+    right: 20px;
+    justify-content: flex-end;
+  }
+
+  &__nav-prev {
+    left: 20px;
+    justify-content: flex-start;
+  }
+  &__nav-next:hover {
+    right: 5px;
+  }
+  &__nav-prev:hover {
+    left: 5px;
+  }
+  &__nav-next:hover &__nav-inner,
+  &__nav-prev:hover &__nav-inner {
+    width: 50%;
+  }
+  &__nav-arrow {
+    height: 10px;
+    width: 1px;
+    background-color: black;
+  }
+}
