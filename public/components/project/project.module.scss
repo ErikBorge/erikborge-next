@@ -34,13 +34,15 @@
   //   width: 400px;
   margin-bottom: 50px;
   position: relative;
+  &__back-button {
+    font-size: 20px;
+  }
   &__title {
-    font-family: "Raleway", sans-serif;
-    font-size: 50px;
-    font-weight: 900;
+    font-size: 30px;
+    font-weight: 400;
   }
   &__image {
-    // height: 400px;
+    min-height: 400px;
     position: relative;
     width: 100%;
     background-color: pink;

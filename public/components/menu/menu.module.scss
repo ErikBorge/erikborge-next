@@ -1,0 +1,35 @@
+.menu {
+  &__button {
+  }
+  &__button:hover {
+  }
+
+  &__open {
+    position: absolute;
+    top: 0;
+    left: 0;
+    background-color: pink;
+    width: 100%;
+  }
+  &__content {
+    width: 100%;
+    margin: 0 auto;
+    margin-top: 100px;
+  }
+  &__items {
+    display: flex;
+    flex-direction: column;
+  }
+  &__item {
+    margin: 20px auto;
+    font-size: 30px;
+  }
+  &__contact {
+    margin-top: 100px;
+    display: flex;
+    justify-content: center;
+  }
+  &__contact-item {
+    margin: 0 20px;
+  }
+}

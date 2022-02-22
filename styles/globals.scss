@@ -8,6 +8,7 @@ body {
   margin: 0;
   // font-family: "Raleway", sans-serif;
   font-family: "Roboto Mono", monospace;
+  font-weight: 200;
 }
 
 a {
@@ -19,10 +20,21 @@ a {
   box-sizing: border-box;
 }
 
+a,
+button {
+  font-family: "Roboto Mono", monospace;
+}
+
 button {
   background: unset;
   border: unset;
   cursor: pointer;
+  font-weight: 200;
+}
+button:focus,
+button:hover {
+  outline: none;
+  text-decoration: underline;
 }
 
 //SWIPER

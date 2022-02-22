@@ -1,5 +1,6 @@
 .page {
   width: 100vw;
-  height: 100vh;
+  min-height: 100vh;
   background-color: rgb(223, 222, 223);
+  overflow: auto;
 }

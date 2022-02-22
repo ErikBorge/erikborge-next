@@ -1,29 +1,37 @@
 import { useState, useEffect, useRef } from "react";
 import styles from "./main.module.scss";
 import Content from "../content/content";
+import FrontPage from "../front-page/front-page.jsx";
+import WorkPage from "../work-page/work-page.jsx";
+
+import Typist from "react-typist";
+import "react-typist/dist/Typist.css";
+import Menu from "../menu/menu";
+// import Project from '../project/project.jsx'
 
 const Main = () => {
-  const frame = useRef();
-  const [showContent, setShowContent] = useState(false);
-  useEffect(() => {
-    if (frame) {
-      frame.current.addEventListener("animationend", () => {
-        // console.log("Animation ended");
-        setShowContent(true);
-      });
-    }
-  }, []);
-
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [page, setPage] = useState("home");
   return (
-    <div className={styles["main__frame-container"]}>
-      <div className={styles["main__frame"]} ref={frame}>
-        <div className={styles["main__header"]}>Erik Borge</div>
-        <div
-          className={styles["main__content"]}
-          style={{ opacity: !showContent ? 0 : 1 }}
+    <div className={styles.main}>
+      <div className={styles["main__container"]}>
+        <button
+          className={styles["main__menu-button"]}
+          onClick={() => setIsMenuOpen(!isMenuOpen)}
         >
-          <Content />
-        </div>
+          {!isMenuOpen ? "menu" : "close"}
+        </button>
+        {isMenuOpen ? (
+          <Menu setPage={setPage} setIsMenuOpen={setIsMenuOpen} />
+        ) : page === "home" ? (
+          <FrontPage />
+        ) : page === "work" ? (
+          <WorkPage />
+        ) : page === "mishmash" ? (
+          <div>MISHMASH</div>
+        ) : (
+          "none of the above"
+        )}
       </div>
     </div>
   );
