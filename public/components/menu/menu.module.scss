@@ -1,17 +1,36 @@
 .menu {
+  
   &__button {
   }
   &__button:hover {
   }
-
+  &__home {
+    position: absolute;
+    top: 0;
+    left: 0;
+    font-size: 20px;
+  }
   &__open {
     position: absolute;
     top: 0;
     left: 0;
-    background-color: pink;
     width: 100%;
+    height: 100%;
+    background-color: rgb(225, 225, 225);
+    
+  }
+  &__open:before{
+    content: "";
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    background-image: url("/assets/grain.gif");
+    opacity: 0.2;
   }
   &__content {
+    position: relative;
     width: 100%;
     margin: 0 auto;
     margin-top: 100px;
@@ -31,5 +50,8 @@
   }
   &__contact-item {
     margin: 0 20px;
+  }
+  &__contact-item:hover {
+    text-decoration: underline;
   }
 }

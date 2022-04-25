@@ -10,6 +10,13 @@ module.exports = {
   //   return config;
   // },
 
+  // webpack(config, { isServer }) {
+  //   if (!isServer) {
+  //     config.resolve.fallback.fs = false;
+  //   }
+  //   return config;
+  // },
+
   images: {
     domains: ["cdn.sanity.io"],
     // loader: "custom",
@@ -20,6 +27,7 @@ module.exports = {
     prependData: `
     @import 'colors.scss';
     @import 'mixins.scss';
+    @import 'variables.scss';
     `,
   },
 };

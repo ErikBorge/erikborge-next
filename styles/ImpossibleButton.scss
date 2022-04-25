@@ -1,0 +1,33 @@
+.impossible-button{
+    width: 100%;
+    height: 100%;
+    &__container{
+        width: 100%;
+        height: 100%;
+    }
+    &__buttonContainer{
+        width: 100%;
+        height: 100%;
+        position: relative;
+    }
+    button{
+        border: 2px solid black;
+        background: white;
+    }
+    
+    &__buttonBackdrop{
+        padding: 50px;
+        position: absolute;
+        top: 40%;
+        left: 40%;
+        transition: top 0.3s ease, left 0.3s ease;
+    }
+    &__myButton{
+        height: 45px;
+        padding: 8px 20px;
+        background-color: #e2e2e2;
+        border: 2px solid black;
+        font-size: 18px;
+        cursor: pointer;
+    }
+}

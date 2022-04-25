@@ -1,0 +1,52 @@
+// Media queries
+@mixin screen-xxl-max {
+  @media screen and (max-width: $breakpoint-xxl) {
+    @content;
+  }
+}
+@mixin screen-xl-max {
+  @media screen and (max-width: $breakpoint-xl) {
+    @content;
+  }
+}
+@mixin screen-lg-max {
+  @media screen and (max-width: $breakpoint-lg) {
+    @content;
+  }
+}
+@mixin screen-md-max {
+  @media screen and (max-width: $breakpoint-md) {
+    @content;
+  }
+}
+@mixin screen-sm-max {
+  @media screen and (max-width: $breakpoint-sm) {
+    @content;
+  }
+}
+
+@mixin screen-xxl-min {
+  @media screen and (min-width: $breakpoint-xxl) {
+    @content;
+  }
+}
+@mixin screen-xl-min {
+  @media screen and (min-width: $breakpoint-xl) {
+    @content;
+  }
+}
+@mixin screen-lg-min {
+  @media screen and (min-width: $breakpoint-lg) {
+    @content;
+  }
+}
+@mixin screen-md-min {
+  @media screen and (min-width: $breakpoint-md) {
+    @content;
+  }
+}
+@mixin screen-sm-min {
+  @media screen and (min-width: $breakpoint-sm) {
+    @content;
+  }
+}

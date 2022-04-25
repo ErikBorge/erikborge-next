@@ -1,0 +1,15 @@
+.slider{
+    .MuiSlider-thumb{
+        background-color: gray;
+        &:hover{
+            box-shadow: 0px 0px 0px 8px rgba(186, 186, 186, 0.16);
+        }
+    }
+    .MuiSlider-rail{
+        background-color: lightgray;
+    }
+    .MuiSlider-track{
+        border-color: gray;
+        background-color: gray;
+    }
+}

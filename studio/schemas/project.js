@@ -17,9 +17,10 @@ export default {
       type: "boolean",
     },
     {
-      name: "image",
-      title: "Image",
-      type: "image",
+      name: "images",
+      title: "Images",
+      type: "array",
+      of: [{ type: "image" }],
       validation: (Rule) => Rule.required(),
     },
     {
