@@ -5,6 +5,9 @@
     left: 10px;
     font-size: 20px;
     z-index: 20;
+    @include screen-sm-min{
+      left: 24px;
+    }
   }
   &__next {
     position: absolute;
@@ -12,5 +15,8 @@
     right: 10px;
     font-size: 20px;
     z-index: 20;
+    @include screen-sm-min{
+      right: 24px;
+    }
   }
 }

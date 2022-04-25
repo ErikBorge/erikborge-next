@@ -12,6 +12,15 @@ export default {
       validation: (Rule) => Rule.required(),
     },
     {
+      name: "slug",
+      title: "Slug",
+      type: "slug",
+      options: {
+        source: "title",
+      },
+      validation: (Rule) => Rule.required(),
+    },
+    {
       name: "active",
       title: "Active?",
       type: "boolean",

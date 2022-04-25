@@ -21,7 +21,7 @@ const Work = ({ projects, setIsInTransit }) => {
             {projects &&
               projects.map((project, key) => {
                 return (
-                  <Link href={`/work/${project.title}`} key={key}>
+                  <Link href={`/arbeid/${project.slug.current}`} key={key}>
                     <a
                       onClick={() => setIsInTransit(true)}
                       className={styles["work__project"]}

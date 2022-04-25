@@ -36,20 +36,38 @@
   position: relative;
   &__back-button {
     font-size: 20px;
+    position: absolute;
+    top: -25px;
+    left: -20px;
+  }
+
+  &__content{
+    position: relative;
+    padding-top: 20px;
   }
   &__title {
     font-size: 30px;
     font-weight: 400;
+    word-break: break-word;
   }
-  &__content {
+  &__info {
+    // @include screen-sm-max{
+    //   padding: 0;
+    // }
+  }
+  &__text{
     display: flex;
     justify-content: space-between;
+    @include screen-sm-max{
+      flex-direction: column-reverse;
+    }
   }
   &__intro {
     width: 75%;
   }
   &__technologies {
-    margin-right: 30px;
+    // margin-right: 30px;
+    margin-bottom: 20px;
 
     // font-weight: 400;
     div {
@@ -58,15 +76,20 @@
     }
   }
   &__image {
-    max-height: 400px;
-    height: 400px;
-    // position: relative;
-    margin: 20px 0;
+    max-height: 300px;
+    height: 300px;
+    width: calc(100% + 60px);
+    transform: translateX(-30px);
+    margin-bottom: 20px;
     display: flex;
     justify-content: center;
+    @include screen-md-min{
+      max-height: 400px;
+      height: 400px;
+    }
     img {
       object-fit: contain;
-      // max-width: 100%;
+      max-width: calc(100% - 60px);
       max-height: 100%;
     }
   }
