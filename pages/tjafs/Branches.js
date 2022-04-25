@@ -12,6 +12,7 @@ const Sketch = dynamic(() => import("react-p5").then((mod) => mod.default), {
   ssr: false,
 });
 
+let pagePadding = 30;
 let lineWidth = 8;
 let randomY, lastRandomY, system, lastBranch, startPositionX;
 let color, color1, color2, color3;
@@ -29,7 +30,10 @@ const Branches = ({ isInTransit, frameSize }) => {
   const [spacing, setSpacing] = useState(10);
 
   const setup = (p, canvasParentRef, ref) => {
-    p.createCanvas(frameSize.width, frameSize.height).parent(canvasParentRef);
+    p.createCanvas(
+      frameSize.width - 2 * pagePadding,
+      frameSize.height - 2 * pagePadding
+    ).parent(canvasParentRef);
     p.strokeWeight(lineWidth);
     p.strokeCap(p.SQUARE);
 

@@ -17,7 +17,7 @@ const Menu = ({ setPage, setIsMenuOpen, setIsInTransit }) => {
         </div> */}
         <div className={styles["menu__content"]}>
           <div className={styles["menu__items"]}>
-            <Link href="/work">
+            <Link href="/arbeid">
               <a onClick={changePage} className={styles["menu__item"]}>
                 arbeid
               </a>
