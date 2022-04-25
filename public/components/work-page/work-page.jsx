@@ -10,8 +10,9 @@ const projectsQuery = `
     *[_type == "project"]{
         _id,
         title,
-        image,
-        "imageUrl": image.asset->url,
+        images[]{
+          asset->{url}
+        },
         url,
         intro,
         description,

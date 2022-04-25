@@ -1,7 +1,7 @@
 import Head from "next/head";
 import Image from "next/image";
 import styles from "../styles/Home.module.scss";
-import Main from "../public/components/main/main";
+import FrontPage from "../public/components/front-page/front-page";
 
 export default function Home() {
   return (
@@ -11,9 +11,9 @@ export default function Home() {
         <meta name="description" content="Created by Erik Borge" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <div className={styles.page}>
-        <Main />
-      </div>
+      {/* <div className={styles.page}> */}
+      <FrontPage />
+      {/* </div> */}
     </div>
   );
 }

@@ -2,6 +2,15 @@
 @import url("https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,100;0,200;0,400;0,600;0,800;0,900;1,100;1,200;1,400;1,600;1,800;1,900&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@200;400;600&display=swap");
 
+//Components
+@import "../public/components/ExpandButton/ExpandButton.scss";
+@import "../public/components/Slider/Slider.scss";
+
+//MishMash
+@import "../styles/Branches.scss";
+@import "../styles/ImpossibleButton.scss";
+
+
 html,
 body {
   padding: 0;
@@ -31,8 +40,9 @@ button {
   cursor: pointer;
   font-weight: 200;
 }
-button:focus,
-button:hover {
+
+button:hover,
+a:hover {
   outline: none;
   text-decoration: underline;
 }
@@ -51,8 +61,12 @@ button:hover {
 }
 
 .swiper-slide {
-  width: 70vw !important;
+  display: flex;
+  justify-content: center;
 }
+// .swiper-slide {
+//   width: 70vw !important;
+// }
 // .swiper-button-prev:after,
 // .swiper-button-next:after {
 //   display: none;
