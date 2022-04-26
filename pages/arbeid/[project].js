@@ -1,4 +1,4 @@
-import { useState, useEffect, useRef } from "react";
+import { useRef } from "react";
 import SanityBlockContent from "@sanity/block-content-to-react";
 import styles from "./project.module.scss";
 import { Swiper, SwiperSlide } from "swiper/react";
@@ -78,7 +78,7 @@ const Project = ({
           <div className={styles["project__text"]}>
             <div className={styles["project__intro"]}>
               {intro}
-              <SanityBlockContent blocks={description} />
+              {description && <SanityBlockContent blocks={description} />}
             </div>
             {technologies && technologies.length >= 1 && (
               <div className={styles["project__technologies"]}>
