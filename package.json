@@ -16,7 +16,7 @@
     "@sanity/image-url": "^0.140.22",
     "canvas-confetti": "^1.5.1",
     "classnames": "^2.3.1",
-    "framer-motion": "^6.2.8",
+    "framer-motion": "^6.3.2",
     "next": "^12.1.4",
     "next-sanity-image": "^3.2.1",
     "p5": "^1.4.1",

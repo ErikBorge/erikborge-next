@@ -1,19 +1,19 @@
-import styles from "./Layout.module.scss";
 import { useState, useRef, useEffect } from "react";
 import Menu from "../menu/menu";
 import Link from "next/link";
+import cn from "classnames";
 
-const Layout = ({ children, isInTransit, setIsInTransit, setIsMounted }) => {
+const Layout = ({
+  children,
+  isInTransit,
+  setIsInTransit,
+  setIsMounted,
+  layoutProps,
+}) => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [showContent, setShowContent] = useState(false);
 
   useEffect(() => {
-    // if (frame) {
-    //   frame.current.addEventListener("animationend", () => {
-    //     // console.log("Animation ended");
-    //     setShowContent(true);
-    //   });
-    // }
     setTimeout(() => {
       setShowContent(true);
       setIsInTransit(false);
@@ -22,27 +22,30 @@ const Layout = ({ children, isInTransit, setIsInTransit, setIsMounted }) => {
   }, []);
 
   return (
-    <main className={styles.layout}>
-      <div className={styles["layout__frame-container"]}>
-        <div className={styles["layout__frame"]}>
+    <main className={"layout"}>
+      <div className={"layout__frame-container"}>
+        <div className={"layout__frame"}>
           <Link href="/">
             <a
-              className={styles["layout__header"]}
+              className={"layout__header"}
               onClick={() => setIsInTransit(true)}
             >
               Erik Borge
             </a>
           </Link>
-          {/* <div className={styles["layout__header"]}>Erik Borge</div> */}
-          {isInTransit && <div className={styles["layout__grain"]} />}
+          {isInTransit && <div className={"layout__grain"} />}
           <div
-            className={`${styles["layout__content"]} ${
-              showContent ? styles["layout__content-visible"] : ""
-            }`}
+            className={cn(
+              "layout__content",
+              {
+                "layout__content-visible": showContent,
+              },
+              layoutProps?.map((theme) => `layout__content--${theme}`)
+            )}
             id="Frame"
           >
             <button
-              className={styles["layout__menu-button"]}
+              className={"layout__menu-button"}
               onClick={() => setIsMenuOpen(!isMenuOpen)}
             >
               {!isMenuOpen ? "meny" : "lukk"}

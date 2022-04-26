@@ -111,6 +111,14 @@
 
     animation-fill-mode: forwards;
   }
+
+  //themes
+  &__content--noPadding{
+    padding: 0;
+  }
+  &__content--noOverflow{
+    overflow: hidden;
+  }
 }
 
 @keyframes framemationDesktop {
