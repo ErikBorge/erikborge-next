@@ -1,7 +1,7 @@
 import Head from "next/head";
 import "../styles/globals.scss";
 import Layout from "../public/components/Layout/Layout";
-import { useEffect, useState, useRef } from "react";
+import { useEffect, useState } from "react";
 
 function MyApp({ Component, pageProps }) {
   const [isInTransit, setIsInTransit] = useState(true);
@@ -18,10 +18,8 @@ function MyApp({ Component, pageProps }) {
 
   useEffect(() => {
     const el = document.getElementById("Frame");
-    // console.log(el.offsetWidth);
     if (el) setFrameSize({ width: el.offsetWidth, height: el.offsetHeight });
   }, [isInTransit]);
-
   return (
     <>
       <Head>
@@ -33,6 +31,7 @@ function MyApp({ Component, pageProps }) {
         isInTransit={isInTransit}
         setIsInTransit={setIsInTransit}
         setIsMounted={setIsMounted}
+        layoutProps={pageProps.layoutProps}
       >
         <Component
           {...pageProps?.page}
