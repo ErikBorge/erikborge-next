@@ -12,7 +12,7 @@ const Sketch = dynamic(() => import("react-p5").then((mod) => mod.default), {
   ssr: false,
 });
 
-let pagePadding = 30;
+let pagePadding = 0;
 let lineWidth = 8;
 let randomY, lastRandomY, system, lastBranch, startPositionX;
 let color, color1, color2, color3;
@@ -37,7 +37,7 @@ const Branches = ({ isInTransit, frameSize }) => {
     p.strokeWeight(lineWidth);
     p.strokeCap(p.SQUARE);
 
-    startPositionX = (p.width * 3) / 4;
+    startPositionX = p.width; //(p.width * 3) / 4;
     lastRandomY = p.width / 2;
     randomY = 0;
     system = new BranchSystem();
@@ -65,13 +65,7 @@ const Branches = ({ isInTransit, frameSize }) => {
       hasPutFirstBranch = true;
     } else {
       if (startPositionX - lastBranch.posX > spacing) {
-        lastBranch = system.addBranch(
-          (p.width * 3) / 4,
-          randomY,
-          speed,
-          color,
-          p
-        );
+        lastBranch = system.addBranch(startPositionX, randomY, speed, color, p);
         lastRandomY = randomY;
       }
     }
@@ -123,7 +117,7 @@ const Branches = ({ isInTransit, frameSize }) => {
         {controllerIsOpen && (
           <>
             <div>
-              speed
+              hastighet
               <Slider
                 value={speed}
                 min={0}
@@ -133,7 +127,7 @@ const Branches = ({ isInTransit, frameSize }) => {
               />
             </div>
             <div>
-              spread
+              tilfeldighet
               <Slider
                 value={spread}
                 min={0}
@@ -143,7 +137,7 @@ const Branches = ({ isInTransit, frameSize }) => {
               />
             </div>
             <div>
-              spacing
+              mellomrom
               <Slider
                 value={spacing}
                 min={lineWidth - 2}
@@ -161,3 +155,7 @@ const Branches = ({ isInTransit, frameSize }) => {
 };
 
 export default Branches;
+
+export async function getStaticProps() {
+  return { props: { layoutProps: ["noPadding", "noOverflow"] } };
+}
