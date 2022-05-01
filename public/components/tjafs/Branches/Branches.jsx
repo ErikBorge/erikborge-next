@@ -1,10 +1,9 @@
 import { useState } from "react";
-// import Sketch from "react-p5";
 import dynamic from "next/dynamic";
-import { getRandomInt, BranchSystem } from "../../public/src/branches";
-import Slider from "../../public/components/Slider/Slider";
+import { getRandomInt, BranchSystem } from "../../../src/branches";
+import Slider from "../../Slider/Slider";
 
-import Controls from "../../public/components/Controls/Controls";
+import Controls from "../../Controls/Controls";
 
 // Will only import `react-p5` on client-side
 const Sketch = dynamic(() => import("react-p5").then((mod) => mod.default), {
@@ -15,10 +14,10 @@ let pagePadding = 0;
 let lineWidth = 8;
 let randomY, lastRandomY, system, lastBranch, startPositionX;
 let color, color1, color2, color3;
-let hasPutFirstBranch = false;
 let maxSpread;
 
 const Branches = ({ isInTransit, frameSize }) => {
+  const [hasPutFirstBranch, setHasPutFirstBranch] = useState(false);
   const [speed, setSpeed] = useState(2);
   const [spread, setSpread] = useState(30);
   const [spacing, setSpacing] = useState(10);
@@ -53,9 +52,10 @@ const Branches = ({ isInTransit, frameSize }) => {
     color = p.color(color1, color2, color3);
 
     if (!hasPutFirstBranch) {
+      console.log("hey");
       lastBranch = system.addBranch(startPositionX, randomY, speed, color, p);
       lastRandomY = randomY;
-      hasPutFirstBranch = true;
+      setHasPutFirstBranch(true);
     } else {
       if (startPositionX - lastBranch.posX > spacing) {
         lastBranch = system.addBranch(startPositionX, randomY, speed, color, p);
@@ -109,7 +109,3 @@ const Branches = ({ isInTransit, frameSize }) => {
 };
 
 export default Branches;
-
-export async function getStaticProps() {
-  return { props: { layoutProps: ["noPadding", "noOverflow"] } };
-}
