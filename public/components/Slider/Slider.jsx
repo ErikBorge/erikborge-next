@@ -4,7 +4,7 @@ const Slider = ({ value, min, max, step, onChange }) => {
   return (
     <div className="slider">
       <MUISlider
-        defaultValue={(min + max) / 2}
+        defaultValue={null} //{(min + max) / 2}
         value={value}
         step={step}
         min={min}

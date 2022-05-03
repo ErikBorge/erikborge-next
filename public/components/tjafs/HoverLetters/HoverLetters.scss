@@ -1,0 +1,53 @@
+$textColor: rgb(233, 233, 233);
+$animationTime: 1s;
+.hover-letters{ 
+    position: relative;
+    color: $textColor;
+    &__controls{
+        color: black;
+    }
+    &__letters{
+        display: flex;
+        flex-wrap: wrap;
+        color: $textColor;
+        span{
+            // transition: color 0.3s ease;
+            cursor: default;
+            animation-name: removeColor;
+            animation-timing-function: ease;
+            animation-duration: $animationTime;
+        }
+        span:hover{
+            animation-name: addColor
+        }
+
+    }
+    &__cover{
+        position: absolute;
+        width: 100%;
+        height: 21px;
+        background-color: white;
+        top: 0;
+        left: 0;
+        transition: left 0.07s ease;
+    }
+}
+
+@keyframes addColor {
+    0%{
+        color: $textColor;
+    }
+    100%{
+        color: black;
+    }
+}
+
+@keyframes removeColor {
+    0%{
+        color: black;
+    }
+
+    100%{
+        color: $textColor;
+    }
+}

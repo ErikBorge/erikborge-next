@@ -2,6 +2,7 @@ import Head from "next/head";
 import Link from "next/link";
 import { useState } from "react";
 import styles from "../../styles/tjafs.module.scss";
+import { tjafsObjects } from "../../public/src/tjafsObjects";
 
 const Tjafs = () => {
   // const [mish, setMish] = useState(false);
@@ -21,12 +22,11 @@ const Tjafs = () => {
           </div>
         </div>
         <div className={styles["mishmash__list"]}>
-          <div>
-            <Link href={"/tjafs/Branches"}>Greie greiner</Link>
-          </div>
-          <div>
-            <Link href={"/tjafs/ImpossibleButton"}>Faens knapp</Link>
-          </div>
+          {tjafsObjects?.map((tjaf, index) => (
+            <div key={`tjafs-${index}-${tjaf.title}`}>
+              <Link href={`/tjafs/${tjaf.href}`}>{tjaf.title}</Link>
+            </div>
+          ))}
         </div>
       </div>
     </>

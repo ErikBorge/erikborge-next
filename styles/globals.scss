@@ -8,10 +8,14 @@
 @import "../public/components/ExpandButton/ExpandButton.scss";
 @import "../public/components/Slider/Slider.scss";
 @import "../public/components/Controls/Controls.scss";
+@import "../public/components/Navigation/Navigation.scss";
+@import "../public/components/Solitaire/Solitaire.scss";
 
 //Pages
-@import "../styles/Branches.scss";
-@import "../styles/ImpossibleButton.scss";
+@import "../public/components/tjafs/Branches/Branches.scss";
+@import "../public/components/tjafs/ImpossibleButton/ImpossibleButton.scss";
+@import "../public/components/tjafs/HoverLetters/HoverLetters.scss";
+@import "../styles/index.scss";
 
 
 html,
