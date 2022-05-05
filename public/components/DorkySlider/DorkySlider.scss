@@ -1,0 +1,82 @@
+.dorky-slider{
+    $hover-active-color: rgb(80, 80, 80);
+    $thumb-width: 50px;
+    $thumb-height: 37px;
+    $track-height: 40px;
+    $rail-color: rgb(236, 236, 236);
+    $track-color: rgb(189, 189, 189);
+
+    margin-top: 40px;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    &__slider{
+        width: 50%;
+
+        &--hidden{
+            opacity: 0;
+        }
+        &--completed{
+            .MuiSlider-thumb{
+                background-color: green !important;
+            }
+        }
+    }
+
+        .MuiSlider-root{
+            padding: 0;
+            height: 40px;
+            border-radius: 0;
+            &::before{
+                content: "";
+                position: absolute;
+                left: -$thumb-width/2;
+                top: 0;
+                width: $thumb-width/2;
+                height: $track-height;
+                background-color: $track-color
+            }
+            &::after{
+                content: "";
+                position: absolute;
+                right: -$thumb-width/2;
+                top: 0;
+                width: $thumb-width/2;
+                height: $track-height;
+                background-color: $rail-color;
+            }
+        }
+        .MuiSlider-thumb{
+            background-color: gray;
+            transition: background-color 0.3s ease;
+            border-radius: 0;
+            width: $thumb-width;
+            height: 37px;
+            z-index: 10;
+            &:hover{
+                background-color: $hover-active-color;
+                box-shadow: unset;//0px 0px 0px 8px rgba(186, 186, 186, 0.16);
+                .MuifocusVisible{
+                    box-shadow: unset;
+                }
+            }
+        }
+        .MuiSlider-thumb.Mui-active{
+            box-shadow: unset;
+            background-color: $hover-active-color
+        }
+        .MuiSlider-thumb.Mui-focusVisible{
+            box-shadow: unset;
+        }
+        
+        .MuiSlider-rail{
+            opacity: 1;
+            background-color: $rail-color;
+        }
+        .MuiSlider-track{
+            // border-color: gray;
+            border: unset;
+            background-color: $track-color;
+        }
+}

@@ -1,4 +1,5 @@
 import dynamic from "next/dynamic";
+import { useEffect } from "react";
 
 // Will only import `react-p5` on client-side
 const Sketch = dynamic(() => import("react-p5").then((mod) => mod.default), {
@@ -30,6 +31,7 @@ const Solitaire = ({ frameSize, setSolitaire }) => {
 
     cnv.mouseMoved((event) => {
       event.preventDefault();
+      event.stopPropagation();
       if (p.mouseIsPressed) {
         mouseMoved(event, p);
       }
@@ -40,10 +42,12 @@ const Solitaire = ({ frameSize, setSolitaire }) => {
     // });
     cnv.touchStarted((event) => {
       event.preventDefault();
+      event.stopPropagation();
       touchStarted(event, p);
     });
     cnv.touchMoved((event) => {
       event.preventDefault();
+      event.stopPropagation();
       touchMoved(event, p);
     });
     p.background(200);
@@ -108,6 +112,8 @@ const Solitaire = ({ frameSize, setSolitaire }) => {
 
   const mousePressed = (p, event) => {
     event.preventDefault();
+    event.stopPropagation();
+    // console.log("mousePressed");
     throwCard(event.clientX - compensateX, event.clientY - compensateY, p);
     // p.mouseMoved((e) => mouseMoved(e, p));
   };
@@ -153,6 +159,13 @@ const Solitaire = ({ frameSize, setSolitaire }) => {
       image.src = item;
     });
   };
+
+  // useEffect(() => {
+  //   return () => {
+  //     console.log("removing event listener");
+  //     window.removeEventListener("mousedown", mousePressed);
+  //   };
+  // });
 
   return (
     <div className="solitaire">
