@@ -2,6 +2,30 @@
 @import url("https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,100;0,200;0,400;0,600;0,800;0,900;1,100;1,200;1,400;1,600;1,800;1,900&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@200;400;600&display=swap");
 
+@font-face {
+  font-family: 'Soulcraft GX';
+  src: 
+    url('/assets/fonts/SoulcraftGX.ttf');
+  font-stretch: 0% 100%;
+  font-style: oblique 0deg 10deg;
+  font-weight: 100 900;
+  font-display: swap;
+  font-variation-settings: 'wdth' 100;
+}
+@font-face {
+  src: url('https://res.cloudinary.com/dr6lvwubh/raw/upload/v1529908256/CompressaPRO-GX.woff2');
+  font-family:'Compressa VF';
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Recursive VF';
+  font-style: oblique -15deg 0deg; 
+  font-weight: 300 1000;
+  font-display: swap;
+  src: url('https://s3-us-west-2.amazonaws.com/s.cdpn.io/13034/Recursive_VF_1.043--subset_range_english_basic.woff2') format('woff2');
+}
+
 @import "../public/components/Layout/Layout.scss";
 
 //Components
@@ -11,6 +35,7 @@
 @import "../public/components/Navigation/Navigation.scss";
 @import "../public/components/Solitaire/Solitaire.scss";
 @import "../public/components/DorkySlider/DorkySlider.scss";
+@import "../public/components/VariableFontTitle/VariableFontTitle.scss";
 
 //Pages
 @import "../public/components/tjafs/Branches/Branches.scss";
@@ -26,6 +51,14 @@ body {
   // font-family: "Raleway", sans-serif;
   font-family: "Roboto Mono", monospace;
   font-weight: 200;
+  background: #f7f3ea;
+}
+
+main{
+  width: 100vw;
+  height: 100vh;
+  height: 100dvh;
+  max-width: 100vw;
 }
 
 a {

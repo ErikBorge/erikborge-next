@@ -7,12 +7,70 @@
   //   justify-content: center;
   //   align-items: center;
   padding-top: 100px;
+  $self: &;
   &__title {
-    font-size: 40px;
+    font-size: 60px;
     margin-bottom: 20px;
-    font-weight: 400;
+    // font-weight: 400;
+    font-family: Soulcraft GX;
+    // font-family: Recursive VF;
+    display: flex;
+    justify-content: center;
+    // transition: font-variation-settings 1s ease;
+    
+    &-letter{
+      // font-variation-settings: 'wght' 300;
+      animation: defont 1s forwards;
+      transition: font-size 1s ease;
+      &:hover{
+        animation: font 1s forwards;
+        font-size: 100px;
+      }
+    }
   }
   &__subtitle {
     font-size: 20px;
+  }
+}
+
+
+@keyframes font {
+  0% {
+     font-variation-settings: "wdth" 50;
+  }
+    
+  100% {
+    font-variation-settings: "wdth" 100;
+  }
+}
+
+
+@keyframes defont {
+  0% {
+     font-variation-settings: "wdth" 100;
+  }
+    
+  100% {
+    font-variation-settings: "wdth" 50;
+  }
+}
+
+@keyframes notfont {
+  0% {
+     font-variation-settings: "wdth" 50;
+  }
+    
+  100% {
+    font-variation-settings: "wdth" 0;
+  }
+}
+
+@keyframes notdefont {
+  0% {
+     font-variation-settings: "wdth" 0;
+  }
+    
+  100% {
+    font-variation-settings: "wdth" 50;
   }
 }

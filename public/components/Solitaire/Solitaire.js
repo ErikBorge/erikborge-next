@@ -1,5 +1,5 @@
 import dynamic from "next/dynamic";
-import { useEffect } from "react";
+import { useState } from "react";
 
 // Will only import `react-p5` on client-side
 const Sketch = dynamic(() => import("react-p5").then((mod) => mod.default), {
@@ -21,7 +21,9 @@ let compensateX = 150;
 let compensateY = 100;
 let maxDim = 150;
 
-const Solitaire = ({ frameSize, setSolitaire }) => {
+const Solitaire = ({ frameSize, setSolitaire, setWin }) => {
+  const [hasClicked, setHasClicked] = useState(false);
+
   const setup = (p, canvasParentRef) => {
     const cnv = p
       .createCanvas(frameSize.width, frameSize.height)
@@ -36,13 +38,10 @@ const Solitaire = ({ frameSize, setSolitaire }) => {
         mouseMoved(event, p);
       }
     });
-    // cnv.mouseReleased((event) => {
-    //   event.preventDefault();
-    //   mouseUp(event, p);
-    // });
     cnv.touchStarted((event) => {
       event.preventDefault();
       event.stopPropagation();
+      if (!hasClicked) setHasClicked(true);
       touchStarted(event, p);
     });
     cnv.touchMoved((event) => {
@@ -111,18 +110,13 @@ const Solitaire = ({ frameSize, setSolitaire }) => {
   };
 
   const mousePressed = (p, event) => {
-    event.preventDefault();
+    // event.preventDefault();
     event.stopPropagation();
-    // console.log("mousePressed");
+    if (!hasClicked) setHasClicked(true);
     throwCard(event.clientX - compensateX, event.clientY - compensateY, p);
-    // p.mouseMoved((e) => mouseMoved(e, p));
   };
 
   const mouseMoved = (event, p) => {
-    throwCard(event.clientX - compensateX, event.clientY - compensateY, p);
-  };
-
-  const mouseUp = (event, p) => {
     throwCard(event.clientX - compensateX, event.clientY - compensateY, p);
   };
 
@@ -160,18 +154,18 @@ const Solitaire = ({ frameSize, setSolitaire }) => {
     });
   };
 
-  // useEffect(() => {
-  //   return () => {
-  //     console.log("removing event listener");
-  //     window.removeEventListener("mousedown", mousePressed);
-  //   };
-  // });
-
   return (
     <div className="solitaire">
-      <div className="solitaire__close">
-        <button onClick={() => setSolitaire(false)}>x</button>
-      </div>
+      <button
+        className="solitaire__close"
+        onClick={() => {
+          setSolitaire(false);
+          setWin(false);
+        }}
+      >
+        lukk x
+      </button>
+      {!hasClicked && <div className="solitaire__please-click" />}
       <Sketch setup={setup} draw={draw} mousePressed={mousePressed} />
     </div>
   );

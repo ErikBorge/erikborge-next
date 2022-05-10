@@ -56,6 +56,17 @@ const HoverLetters = ({ frameSize, isInTransit }) => {
     }
   }, [hasMounted]);
 
+  //TODO: make mobile functionality
+  useEffect(() => {
+    const touchMove = (e) => {
+      e.preventDefault();
+    };
+    window.addEventListener("touchmove", touchMove, { passive: false });
+    return () => {
+      window.removeEventListener("touchmove", touchMove, { passive: false });
+    };
+  });
+
   if (isInTransit || !hasMounted) return null;
   return (
     <div className="hover-letters" ref={containerRef}>

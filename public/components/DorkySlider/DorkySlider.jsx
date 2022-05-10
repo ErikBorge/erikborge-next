@@ -26,21 +26,18 @@ const DorkySlider = ({
   );
   const [localWin, setLocalWin] = useState(false);
 
-  //   console.log("slider br", sliderBoundingRect);
-
   const onSliderChange = (e, value) => {
-    // console.log(
-    //   "val",
-    //   value,
-    //   "sval",
-    //   sliderValue,
-    //   "old",
-    //   oldSliderValue,
-    //   "af",
-    //   annoyingFactor
-    // );
+    if (
+      e.type === "touchmove" ||
+      (e.type === "touchstart" && e.touches[0].clientX !== undefined)
+    ) {
+      mouseX = e.touches[0].clientX;
 
-    mouseX = e.clientX;
+      //   for ( var i = 0; i < event.touches.length; i ++ ) {
+    } else {
+      mouseX = e.clientX || sliderBoundingRect.left;
+    }
+
     let range = max / sliderBoundingRect.width;
     sliderLeftDiff = (mouseX - sliderBoundingRect.left) * range;
 
@@ -55,37 +52,32 @@ const DorkySlider = ({
   };
 
   useEffect(() => {
-    //   const mouseMove = (e) => {
-    //     e.preventDefault();
-    //       sliderLeftDiff = e.clientX - sliderBoundingRect.left
-    //   };
-    //   const mouseDown = (e) => {
-    //     e.preventDefault();
-    //     window.addEventListener("mousemove", mouseMove, false);
-    //     //   setOldSliderValue(sliderValue);
-    //     // annoyingFactor = 10 - sliderValue / 10;
-    //   };
+    const touchEnd = (e) => {
+      e.stopPropagation();
+      setOldSliderValue(sliderValue);
+    };
     const mouseUp = (e) => {
       setOldSliderValue(sliderValue);
-      // annoyingFactor = 10 - sliderValue / 10;
-      // console.log("removing mousemove and mousedown");
-      // window.removeEventListener("mousedown", mouseDown);
-      // window.removeEventListener("mousemove", mouseMove);
     };
 
-    //   window.addEventListener("mousedown", mouseDown, false);
     window.addEventListener("mouseup", mouseUp);
+    window.addEventListener("touchend", touchEnd);
 
     return () => {
-      // window.removeEventListener("mousedown", mouseDown);
-      // window.removeEventListener("mousemove", mouseMove);
       window.removeEventListener("mouseup", mouseUp);
+      window.removeEventListener("touchend", touchEnd);
     };
   });
 
   useEffect(() => {
     setSliderBoundingRect(sliderRef.current?.getBoundingClientRect());
   }, [isInTransit, sliderRef]);
+
+  const resetValues = () => {
+    setSliderValue(0);
+    setOldSliderValue(0);
+    annoyingFactor = initialAnnoyingFactor;
+  };
 
   useEffect(() => {
     if (sliderValue > winLimit && !localWin) {
@@ -95,8 +87,8 @@ const DorkySlider = ({
       });
       setLocalWin(true);
       setTimeout(() => {
-        setSliderValue(0);
         setWin(true);
+        resetValues();
       }, winDelay);
     }
     if (sliderValue < winLimit && localWin) {
@@ -107,11 +99,6 @@ const DorkySlider = ({
     annoyingFactor = initialAnnoyingFactor + Math.pow(1 + sliderValue / max, 6); // = 10 + sliderValue / 10;
   }, [sliderValue, win, localWin]);
 
-  //   useEffect(() => {
-  //     if (solitaire){
-  //         setSliderValue(0)
-  //     }
-  //   }, [solitaire])
   return (
     <div className="dorky-slider">
       <div className="dorky-slider__title">
@@ -130,7 +117,7 @@ const DorkySlider = ({
         ref={sliderRef}
       >
         <MUISlider
-          defaultValue={0} //{(min + max) / 2}
+          defaultValue={0}
           value={sliderValue}
           step={1}
           min={0}

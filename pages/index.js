@@ -21,7 +21,11 @@ export default function Home({ frameSize, isInTransit }) {
       </Head>
 
       {solitaire && (
-        <Solitaire frameSize={frameSize} setSolitaire={setSolitaire} />
+        <Solitaire
+          frameSize={frameSize}
+          setSolitaire={setSolitaire}
+          setWin={setWin}
+        />
       )}
       {/* <div className={styles.page}> */}
       <FrontPage

@@ -23,6 +23,7 @@ const Layout = ({
 
   return (
     <main className={"layout"}>
+      <div className="layout__background" />
       <div className={"layout__frame-container"}>
         <div className={"layout__frame"}>
           <Link href="/">

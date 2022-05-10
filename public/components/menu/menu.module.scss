@@ -16,8 +16,7 @@
     left: 0;
     width: 100%;
     height: 100%;
-    background-color: rgb(225, 225, 225);
-    
+    background: #f7f3ea;
   }
   &__open:before{
     content: "";
@@ -27,7 +26,7 @@
     top: 0;
     left: 0;
     background-image: url("/assets/grain.gif");
-    opacity: 0.2;
+    opacity: 0.07;
   }
   &__content {
     position: relative;
