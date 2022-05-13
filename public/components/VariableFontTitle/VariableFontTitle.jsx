@@ -48,12 +48,25 @@ const VariableFontTitle = ({ title, isInTransit }) => {
       var wght = max - Math.abs((max * dist) / maxDist);
       return Math.max(min, wght + min);
     };
+    this.getNegAttr = function (dist, min, max) {
+      // output_start + ((output_end - output_start) / (input_end - input_start)) * (input - input_start)
+      var wght = min + ((max - min) / maxDist) * (dist - min);
+      return wght;
+    };
     this.update = function (args) {
       var dist = this.getDist();
-      this.wdth = args.wdth ? ~~this.getAttr(dist, 5, 200) : 100;
-      this.wght = args.wght ? ~~this.getAttr(dist, 100, 800) : 400;
+      //Roboto Flex
+      this.wdth = args.wdth ? ~~this.getAttr(dist, 40, 151) : 88;
+      this.wght = args.wght ? ~~this.getAttr(dist, 150, 700) : 400;
       this.alpha = args.alpha ? this.getAttr(dist, 0, 1).toFixed(2) : 1;
-      this.ital = args.ital ? this.getAttr(dist, 0, 1).toFixed(2) : 0;
+      this.ital = args.ital ? this.getAttr(dist, 0, -10).toFixed(2) : 0;
+      this.slnt = args.slnt ? this.getNegAttr(dist, -10, 0).toFixed(2) : 0;
+      this.ytuc = args.ytuc ? this.getAttr(dist, 528, 760).toFixed(2) : 725;
+      //Compressa
+      // this.wdth = args.wdth ? ~~this.getAttr(dist, 5, 200) : 100;
+      // this.wght = args.wght ? ~~this.getAttr(dist, 100, 800) : 400;
+      // this.alpha = args.alpha ? this.getAttr(dist, 0, 1).toFixed(2) : 1;
+      // this.ital = args.ital ? this.getAttr(dist, 0, 1).toFixed(2) : 0;
       this.draw();
     };
     this.draw = function () {
@@ -66,6 +79,10 @@ const VariableFontTitle = ({ title, isInTransit }) => {
         this.wdth +
         ", 'ital' " +
         this.ital +
+        ", 'slnt' " +
+        this.slnt +
+        ", 'YTUC' " +
+        this.ytuc +
         ";";
       span.style = style;
     };
@@ -79,7 +96,9 @@ const VariableFontTitle = ({ title, isInTransit }) => {
     this.stroke = false;
     this.width = true;
     this.weight = true;
-    this.italic = true;
+    this.italic = false;
+    this.slnt = false;
+    this.ytuc = false;
     var title,
       str,
       chars = [];
@@ -137,6 +156,8 @@ const VariableFontTitle = ({ title, isInTransit }) => {
           wdth: this.width,
           ital: this.italic,
           alpha: this.alpha,
+          slnt: this.slnt,
+          ytuc: this.ytuc,
         });
       }
     };

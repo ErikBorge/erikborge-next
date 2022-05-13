@@ -109,17 +109,17 @@
   &__content-visible {
     opacity: 1;
   }
-  &__header {
-    position: absolute;
-    z-index: 10;
-    font-family: "Amatic SC", cursive;
-    font-size: 30px;
-    width: 85px;
-    animation: textFadein 1s, textTranslation 1.5s;
-    animation-delay: 0s, 1s;
+  // &__header {
+  //   position: absolute;
+  //   z-index: 10;
+  //   font-family: "Amatic SC", cursive;
+  //   font-size: 30px;
+  //   width: 85px;
+  //   animation: textFadein 1s, textTranslation 1.5s;
+  //   animation-delay: 0s, 1s;
 
-    animation-fill-mode: forwards;
-  }
+  //   animation-fill-mode: forwards;
+  // }
 
   //themes
   &__content--noPadding{

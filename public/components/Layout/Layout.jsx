@@ -26,14 +26,14 @@ const Layout = ({
       <div className="layout__background" />
       <div className={"layout__frame-container"}>
         <div className={"layout__frame"}>
-          <Link href="/">
+          {/* <Link href="/">
             <a
               className={"layout__header"}
               onClick={() => setIsInTransit(true)}
             >
               Erik Borge
             </a>
-          </Link>
+          </Link> */}
           {isInTransit && <div className={"layout__grain"} />}
           <div
             className={cn(
