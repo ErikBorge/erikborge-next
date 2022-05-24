@@ -1,5 +1,5 @@
 import dynamic from "next/dynamic";
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 
 // Will only import `react-p5` on client-side
 const Sketch = dynamic(() => import("react-p5").then((mod) => mod.default), {
@@ -21,15 +21,24 @@ let compensateX = 150;
 let compensateY = 100;
 let maxDim = 150;
 
-const Solitaire = ({ frameSize, setSolitaire, setWin }) => {
+const Solitaire = ({
+  solitaire,
+  frameSize,
+  setSolitaire,
+  dropPosition,
+  isInTransit,
+}) => {
   const [hasClicked, setHasClicked] = useState(false);
+  const containerRef = useRef();
+
+  useEffect(() => {
+    loadImages();
+  }, []);
 
   const setup = (p, canvasParentRef) => {
     const cnv = p
       .createCanvas(frameSize.width, frameSize.height)
       .parent(canvasParentRef);
-
-    loadImages();
 
     cnv.mouseMoved((event) => {
       event.preventDefault();
@@ -50,6 +59,9 @@ const Solitaire = ({ frameSize, setSolitaire, setWin }) => {
       touchMoved(event, p);
     });
     p.background(200);
+
+    const container = containerRef.current?.getBoundingClientRect();
+    throwCard(dropPosition.x - container.x, dropPosition.y - container.y, p);
   };
 
   const draw = (p) => {
@@ -155,18 +167,18 @@ const Solitaire = ({ frameSize, setSolitaire, setWin }) => {
   };
 
   return (
-    <div className="solitaire">
-      <button
-        className="solitaire__close"
-        onClick={() => {
-          setSolitaire(false);
-          setWin(false);
-        }}
-      >
+    <div
+      className="solitaire"
+      ref={containerRef}
+      style={{ display: solitaire ? "block" : "none" }}
+    >
+      <button className="solitaire__close" onClick={() => setSolitaire(false)}>
         lukk x
       </button>
-      {!hasClicked && <div className="solitaire__please-click" />}
-      <Sketch setup={setup} draw={draw} mousePressed={mousePressed} />
+      {/* {!hasClicked && <div className="solitaire__please-click" />} */}
+      {solitaire && (
+        <Sketch setup={setup} draw={draw} mousePressed={mousePressed} />
+      )}
     </div>
   );
 };

@@ -168,7 +168,7 @@ const VariableFontTitle = ({ title, isInTransit }) => {
 
   useEffect(() => {
     const mouseMove = (e) => {
-      e.preventDefault();
+      // e.preventDefault();
       e.stopPropagation();
       cursor.x = e.clientX;
       cursor.y = e.clientY;

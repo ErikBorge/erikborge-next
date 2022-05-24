@@ -1,17 +1,12 @@
 import Head from "next/head";
-import FrontPage from "../public/components/front-page/front-page";
+import FrontPage from "../public/components/FrontPage/FrontPage";
 import Solitaire from "../public/components/Solitaire/Solitaire";
 import { useEffect, useState } from "react";
 
 export default function Home({ frameSize, isInTransit }) {
   const [solitaire, setSolitaire] = useState(false);
-  const [win, setWin] = useState(false);
+  const [dropPosition, setDropPosition] = useState({ x: 0, y: 0 });
 
-  useEffect(() => {
-    if (!solitaire) {
-      setWin(false);
-    }
-  }, [solitaire]);
   return (
     <div className="index">
       <Head>
@@ -20,22 +15,29 @@ export default function Home({ frameSize, isInTransit }) {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      {solitaire && (
-        <Solitaire
-          frameSize={frameSize}
-          setSolitaire={setSolitaire}
-          setWin={setWin}
-        />
-      )}
+      <Solitaire
+        frameSize={frameSize}
+        solitaire={solitaire}
+        setSolitaire={setSolitaire}
+        dropPosition={dropPosition}
+        isInTransit={isInTransit}
+      />
       {/* <div className={styles.page}> */}
       <FrontPage
         solitaire={solitaire}
         setSolitaire={setSolitaire}
-        win={win}
-        setWin={setWin}
+        setDropPosition={setDropPosition}
         isInTransit={isInTransit}
       />
       {/* </div> */}
     </div>
   );
+}
+
+export async function getStaticProps() {
+  return {
+    props: {
+      layoutProps: ["noOverflow"],
+    },
+  };
 }
