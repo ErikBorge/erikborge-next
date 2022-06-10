@@ -6,7 +6,26 @@
     padding-top: 100px;
   }
   &__project {
-    font-size: 30px;
+    // font-family: 'Roboto Flex';
+    font-family: 'Bebas Neue';
+    font-size: 40px;
     margin: 10px 0;
+    position: relative;
+    text-transform: uppercase;
+    text-shadow: 0px 0px 0 #ffd217, 0px 0px 0 #0b79ff, 0px 0px 0 #ffd217;
+    transition: text-shadow 0.3s ease;
+    &:hover{
+      text-shadow: 3px 3px 0 #ffd217, 6px 6px 0 #0b79ff, 9px 9px 0 #ffd217;
+      text-decoration: none;
+    }
+    // &::before{
+    //   content: attr(title);
+    //   position: absolute;
+    //   right: -20px;
+    //   top: 0;
+    //   text-transform: uppercase;
+    //   color: rgb(204, 204, 10);
+    //   // font-variation-settings: 'wdth' 75;
+    // }
   }
 }

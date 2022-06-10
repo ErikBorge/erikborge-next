@@ -37,7 +37,7 @@ export default function Home({ frameSize, isInTransit }) {
 export async function getStaticProps() {
   return {
     props: {
-      layoutProps: ["noOverflow"],
+      layoutProps: ["noOverflow", "background-blue"],
     },
   };
 }

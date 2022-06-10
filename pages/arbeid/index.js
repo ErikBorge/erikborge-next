@@ -25,6 +25,7 @@ const Work = ({ projects, setIsInTransit }) => {
                     <a
                       onClick={() => setIsInTransit(true)}
                       className={styles["work__project"]}
+                      title={project.title}
                     >
                       {project.title}
                     </a>

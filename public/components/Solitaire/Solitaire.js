@@ -17,8 +17,8 @@ const originalImages = [
 let images = [];
 let particles = [];
 //experimental
-let compensateX = 150;
-let compensateY = 100;
+let compensateX = 0;
+let compensateY = 0;
 let maxDim = 150;
 
 const Solitaire = ({
@@ -28,7 +28,6 @@ const Solitaire = ({
   dropPosition,
   isInTransit,
 }) => {
-  const [hasClicked, setHasClicked] = useState(false);
   const containerRef = useRef();
 
   useEffect(() => {
@@ -50,7 +49,6 @@ const Solitaire = ({
     cnv.touchStarted((event) => {
       event.preventDefault();
       event.stopPropagation();
-      if (!hasClicked) setHasClicked(true);
       touchStarted(event, p);
     });
     cnv.touchMoved((event) => {
@@ -60,8 +58,7 @@ const Solitaire = ({
     });
     p.background(200);
 
-    const container = containerRef.current?.getBoundingClientRect();
-    throwCard(dropPosition.x - container.x, dropPosition.y - container.y, p);
+    throwCard(dropPosition.x, dropPosition.y, p);
   };
 
   const draw = (p) => {
@@ -106,25 +103,31 @@ const Solitaire = ({
     };
   };
 
+  const isWithinBounds = (x, y, rect) => {
+    return x > rect.left && x < rect.right && y > rect.top && y < rect.bottom;
+  };
+
   const throwCard = (x, y, p) => {
-    var variable1 = Math.floor(Math.random() * 6 - 3) * 2; //hele tall [-6, 6]
-    var variable2 = -Math.random() * 16; //desimaltall (-16, 0]
-    var pictureChoice = Math.floor(Math.random() * images.length);
-    var particle = new Particle(
-      x,
-      y,
-      variable1,
-      variable2,
-      images[pictureChoice],
-      p
-    );
-    particles.push(particle);
+    const rect = containerRef.current.getBoundingClientRect();
+    if (isWithinBounds(x, y, rect)) {
+      var variable1 = Math.floor(Math.random() * 6 - 3) * 2; //hele tall [-6, 6]
+      var variable2 = -Math.random() * 16; //desimaltall (-16, 0]
+      var pictureChoice = Math.floor(Math.random() * images.length);
+      var particle = new Particle(
+        x - rect.left,
+        y - rect.top,
+        variable1,
+        variable2,
+        images[pictureChoice],
+        p
+      );
+      particles.push(particle);
+    }
   };
 
   const mousePressed = (p, event) => {
     // event.preventDefault();
     event.stopPropagation();
-    if (!hasClicked) setHasClicked(true);
     throwCard(event.clientX - compensateX, event.clientY - compensateY, p);
   };
 

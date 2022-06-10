@@ -11,13 +11,13 @@ const FrontPage = ({
 }) => {
   return (
     <div className="frontpage">
-      <button
+      {/* <button
         onClick={() => {
           setSolitaire(true);
         }}
       >
         Solitaire
-      </button>
+      </button> */}
       {!solitaire && (
         <>
           <VariableFontTitle title={"ERIK BORGE"} isInTransit={isInTransit} />
