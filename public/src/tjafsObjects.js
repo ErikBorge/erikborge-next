@@ -2,6 +2,7 @@ import Branches from "../components/tjafs/Branches/Branches";
 import ImpossibleButton from "../components/tjafs/ImpossibleButton/ImpossibleButton";
 import HoverLetters from "../components/tjafs/HoverLetters/HoverLetters";
 import DorkySlider from "../components/DorkySlider/DorkySlider";
+import Ballz from "../components/tjafs/Ballz/Ballz";
 
 export const tjafsObjects = [
   {
@@ -25,6 +26,12 @@ export const tjafsObjects = [
     title: "Slider",
     href: "slider",
     renderComponent: DorkySlider,
+    layoutProps: [],
+  },
+  {
+    title: "Baller",
+    href: "baller",
+    renderComponent: Ballz,
     layoutProps: [],
   },
 ];
