@@ -34,6 +34,7 @@ const Controls = ({ children, className }) => {
       transition={{ type: "easeOut" }}
       className={cn("controls", { [className]: className })}
       ref={controllerRef}
+      onClick={(e) => e.stopPropagation()}
     >
       <div className="controls__top">
         Kontrollpanel

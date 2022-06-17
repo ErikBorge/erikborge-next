@@ -1,12 +1,22 @@
 .dragger{
-    width: 90%;
+    width: min(90%, 250px);
     @include screen-md-min{
-        width: 60%;
+        width: min(50%, 300px);
     }
-    margin: 0 auto;
+    margin: 50px auto 0;
     flex: 1;
     display: flex;
     justify-content: space-between;
+    &__puzzle{
+        width: 100px;
+        height: 100px;
+        margin-top: 2.5px;
+        cursor: url('/assets/pixel-move-cursor.svg') 15 15, move;
+    }
+    &__puzzle-bin{
+        width: 105px;
+        height: 105px;
+    }
     &__card{
         width: 150px;
         height: 230px;

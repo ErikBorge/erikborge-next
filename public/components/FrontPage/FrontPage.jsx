@@ -2,6 +2,7 @@ import { memo, useEffect, useRef } from "react";
 import Dragger from "../Dragger/Dragger";
 
 import VariableFontTitle from "../VariableFontTitle/VariableFontTitle";
+import VariableFontTitle2 from "../VariableFontTitle/VariableFontTitle2";
 
 const FrontPage = ({
   solitaire,
