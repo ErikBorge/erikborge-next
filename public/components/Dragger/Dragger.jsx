@@ -55,22 +55,19 @@ const Dragger = ({ setSolitaire, setDropPosition }) => {
         {/* <div className="dragger__card" ref={cardRef}>
           DRAG
         </div> */}
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          viewBox="0 0 121 121"
-          className="dragger__puzzle"
-          ref={cardRef}
-        >
-          <path
-            d="M359 284.69h30v-30a20 20 0 0 1 0-40v-30h-30a20 20 0 0 0-40 0h-30v30a20 20 0 0 0 0 40v30h30a20 20 0 0 1 40 0Z"
-            transform="translate(-268.51 -164.19)"
-            style={{
-              fill: "#FBF9F2",
-              stroke: "#000",
-              strokeMiterlimit: 10,
-            }}
-          />
-        </svg>
+        <div className="dragger__puzzle" ref={cardRef}>
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 121 121">
+            <path
+              d="M359 284.69h30v-30a20 20 0 0 1 0-40v-30h-30a20 20 0 0 0-40 0h-30v30a20 20 0 0 0 0 40v30h30a20 20 0 0 1 40 0Z"
+              transform="translate(-268.51 -164.19)"
+              style={{
+                fill: "#FBF9F2",
+                stroke: "#000",
+                strokeMiterlimit: 10,
+              }}
+            />
+          </svg>
+        </div>
       </Draggable>
       {/* <div
         className={cn("dragger__bin", { "dragger__bin--active": isInBin })}
