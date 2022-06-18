@@ -1,12 +1,16 @@
 import Link from "next/link";
 import { useState, useEffect, useRef } from "react";
 import styles from "./menu.module.scss";
+import { useRouter } from "next/router";
 
 const Menu = ({ setPage, setIsMenuOpen, setIsInTransit }) => {
+  const router = useRouter();
+
   const changePage = () => {
     setIsInTransit(true);
     setIsMenuOpen(false);
   };
+
   return (
     <div className={styles.menu}>
       <div className={styles["menu__open"]}>
@@ -17,6 +21,13 @@ const Menu = ({ setPage, setIsMenuOpen, setIsInTransit }) => {
         </div> */}
         <div className={styles["menu__content"]}>
           <div className={styles["menu__items"]}>
+            {router?.pathname !== "/" && (
+              <Link href="/">
+                <a onClick={changePage} className={styles["menu__item"]}>
+                  heim
+                </a>
+              </Link>
+            )}
             <Link href="/arbeid">
               <a onClick={changePage} className={styles["menu__item"]}>
                 arbeid
