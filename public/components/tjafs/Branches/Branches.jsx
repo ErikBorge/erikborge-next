@@ -1,6 +1,7 @@
 import { useState } from "react";
 import dynamic from "next/dynamic";
-import { getRandomInt, BranchSystem } from "../../../src/branches";
+import { BranchSystem } from "../../../src/branches";
+import { getRandomInt } from "../../../src/helpers";
 import Slider from "../../Slider/Slider";
 
 import Controls from "../../Controls/Controls";
